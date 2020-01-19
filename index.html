@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Coin Ticker</title>
+
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container container-fluid main flex-container">
+        <!-- head section -->
+        <section>
+            <div class="head-flex">
+                <h1 class="display-4">Bitcoin Ticker</h1>
+            </div>
+        </section>
+
+        <!-- selection section -->
+        <section>
+            <div class="btn-flex">
+                <div class="btn-group-vertical" role="group" aria-label="Crypto">
+                    <button type="button" class="btn btn-dark btn-lg" value="BTC">BTC</button>
+                    <button type="button" class="btn btn-dark btn-lg" value="ETH">ETH</button>
+                    <button type="button" class="btn btn-dark btn-lg" value="LTC">LTC</button>
+                </div>
+                <div class="btn-group-vertical" role="group" aria-label="Fiat">
+                    <button type="button" class="btn btn-dark btn-lg" value="USD">USD</button>
+                    <button type="button" class="btn btn-dark btn-lg" value="EUR">EUR</button>
+                    <button type="button" class="btn btn-dark btn-lg" value="GBP">GBP</button>
+                </div>
+            </div>
+            <div class="option-display-flex">
+                <div class="selected-opt">
+                    <center id="crypto-opt">---</center>
+                </div>
+                <div class="selected-opt">
+                    <center id="fiat-opt">---</center>
+                </div>
+            </div>
+        </section>
+
+        <!-- find button -->
+        <button type="button" class="btn btn-outline-dark btn-lg btn-block" id="find">Find</button>
+
+        <center>
+            <div class="myColor">Powered by <a href="https://bitcoinaverage.com" class="btc-avg myColor" target="_blank">Bitcoin Average <img src="btc-avg-logo.png" alt="Bitcoin Average Logo" class="btc-avg-logo"></a></div>
+        </center>
+    </div>
+
+    <script>
+        let selectedCrypto = document.getElementById('crypto-opt');
+        let selectedFiat = document.getElementById('fiat-opt');
+
+        let allOptions = document.querySelectorAll('.btn-group-vertical button');
+        allOptions = Array.from(allOptions);
+        const cryptoOptions = allOptions.slice(0, 3);
+        const fiatOptions = allOptions.slice(3, 6);
+
+        cryptoOptions.forEach(elem => {
+            elem.addEventListener('click', () => {
+                selectedCrypto.innerHTML = elem.innerHTML;
+            });
+        });
+
+        fiatOptions.forEach(elem => {
+            elem.addEventListener('click', () => {
+                selectedFiat.innerHTML = elem.innerHTML;
+            })
+        });
+
+        document.getElementById('find').addEventListener('click', async() => {
+            if (selectedCrypto.innerHTML === '---' || selectedFiat.innerHTML === '---') {
+                window.alert('Please choose one Crypto-currency and one Fiat-currency');
+            } else {
+                const finalCrypto = selectedCrypto.innerHTML;
+                const finalFiat = selectedFiat.innerHTML;
+
+                let resData = await fetch(`https://apiv2.bitcoinaverage.com/convert/global?from=${finalCrypto}&to=${finalFiat}`);
+
+                let body = await resData.json();
+
+                if (body.success) {
+                    let msg = `1 ${finalCrypto} = ${body.price} ${finalFiat}`;
+                    let html = `<center><h4 class="myColor">${msg}<h4></center>`;
+                    document.getElementById('find').insertAdjacentHTML('afterend', html);
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

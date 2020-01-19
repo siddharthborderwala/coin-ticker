@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    background-color: whitesmoke;
+    background-color: #343a40;
+}
+
+.main {
+    background-color: rgb(200, 200, 200);
+    padding: 2rem;
+}
+
+.btc-img {
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+    position: fixed;
+    right: 100px;
+    top: 25px;
+    transform: rotate(-12.5deg);
+}
+
+.btn-block {
+    margin: 2rem auto;
+    max-width: 350px;
+}
+
+.btn-dark {
+    padding: auto 2rem;
+}
+
+.flex-container {
+    display: flex;
+    height: 100vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.head-flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.btn-flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.btn-group-vertical {
+    margin: 2rem;
+}
+
+.display-4 {
+    display: inline-block;
+    color: #343a40;
+}
+
+.option-display-flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.selected-opt {
+    width: 72.4px;
+    height: 47.6px;
+    border: 2px solid #343a40;
+    border-radius: 5px;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.myColor {
+    color: #343a40;
+}
+
+.btc-avg {
+    text-decoration: none;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.btc-avg:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.btc-avg-logo {
+    width: 25px;
+    filter: grayscale();
+}
