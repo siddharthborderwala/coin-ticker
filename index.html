@@ -84,10 +84,21 @@
 
                 let body = await resData.json();
 
+                let val = document.getElementById('value');
+                if (val !== null) {
+                    val.parentNode.remove();
+                    val.remove();
+                }
+
                 if (body.success) {
                     let msg = `1 ${finalCrypto} = ${body.price} ${finalFiat}`;
-                    let html = `<center><h4 class="myColor">${msg}<h4></center>`;
+                    let html = `<center><h4 class="myColor" id="value">${msg}<h4></center>`;
                     document.getElementById('find').insertAdjacentHTML('afterend', html);
+
+                    window.scrollTo({
+                        top: 100,
+                        behavior: 'smooth'
+                    });
                 }
             }
         });
