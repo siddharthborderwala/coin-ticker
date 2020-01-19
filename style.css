@@ -6,7 +6,7 @@ body {
 
 .main {
     background-color: rgb(200, 200, 200);
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .btc-img {
@@ -51,9 +51,11 @@ body {
     margin: 2rem;
 }
 
-.display-4 {
+.title-text {
     display: inline-block;
     color: #343a40;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 400;
 }
 
 .option-display-flex {
