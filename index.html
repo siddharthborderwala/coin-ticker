@@ -81,7 +81,7 @@
                 const finalCrypto = selectedCrypto.innerHTML;
                 const finalFiat = selectedFiat.innerHTML;
 
-                let resData = await fetch(`https://apiv2.bitcoinaverage.com/convert/global?from=${finalCrypto}&to=${finalFiat}`);
+                let resData = await fetch(`https://apiv2.bitcoinaverage.com/convert/global?from=${finalCrypto}&to=${finalFiat}&amount=1`);
 
                 let body = await resData.json();
 
